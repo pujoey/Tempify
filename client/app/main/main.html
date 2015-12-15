@@ -1,0 +1,39 @@
+<navbar></navbar>
+
+<header class="hero-unit" id="banner" ng-hide="main.isLoggedIn()">
+  <div class="container">
+    <h1>Welcome to Tempify</h1>
+    <p class="lead">Fight for control for your NEST Thermostat</p>
+    <!-- GET STARTED BUTTON -->
+    <div>
+      <a class="btn btn-success btn-lg btn-register" ui-sref="signup">
+        GET STARTED
+      </a>
+    </div>
+    <br>
+    <img src="assets/images/nest.png" style="width:380px;height:380px;" alt="Nest">
+  </div>
+</header>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">Comments</h1>
+      <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="thing in main.awesomeThings">
+        <li><a href="#" tooltip="{{thing.info}}">{{thing.name}}<button type="button" class="close" ng-click="main.deleteThing(thing)">&times;</button></a></li>
+      </ul>
+    </div>
+  </div>
+
+  <form class="thing-form">
+    <label>Add a public comment...</label>
+    <p class="input-group">
+      <input type="text" class="form-control" placeholder="Add a new thing here." ng-model="main.newThing">
+      <span class="input-group-btn">
+        <button type="submit" class="btn btn-primary" ng-click="main.addThing()">Add New</button>
+      </span>
+    </p>
+  </form>
+</div>
+
+<footer></footer>
