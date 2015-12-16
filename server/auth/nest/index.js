@@ -7,12 +7,12 @@ import auth from '../auth.service';
 var router = express.Router();
 
 router
-  .get('/auth/nest', passport.authenticate('nest', {
+  .get('/', passport.authenticate('nest', {
     failureRedirect: '/',
     session: false
   }))
 
-  .get('/auth/nest/callback', passport.authenticate('nest', {
+  .get('/callback', passport.authenticate('nest', {
     failureRedirect: '/',
     session: false
   }), auth.setTokenCookie);

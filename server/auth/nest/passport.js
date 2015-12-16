@@ -4,7 +4,8 @@ import {Strategy as NestStrategy} from 'passport-nest';
 exports.setup = function(User, config) {
   passport.use(new NestStrategy({
     clientID: config.nest.clientID,
-    clientSecret: config.nest.clientSecret
+    clientSecret: config.nest.clientSecret,
+    authorizationURL: 'https://home.nest.com/login/oauth2?client_id=45c63595-0e4b-42cd-9a76-849075c100d0&state=CA'
   },
   function(accessToken, refreshToken, profile, done) {
     User.findOneAsync({
