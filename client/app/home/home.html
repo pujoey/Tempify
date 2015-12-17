@@ -1,18 +1,28 @@
 <navbar></navbar>
 
-<div class="structure" ng-repeat="s in vm.structures">
+<!-- <div class="structure" ng-repeat="s in vm.structures">
   <h1>{{ s.name }}</h1>
   <h3>HOME/AWAY: {{ s.away }}</h3>
   <ul ng-repeat="t in s.thermostats">
     <li>{{ t.name_long }} | Target Temp: {{ t.target_temperature_f }}</li>
   </ul>
-</div>
-<!-- {{thermostats}}
- --><!-- <div id="content" ng-repeat="therm in thermostats">
-  <div>
-    <h2>{{ therm.name }}</h2>
-  </div>
 </div> -->
+
+<div class="row">
+  <div ng-repeat="s in vm.structures">
+    <h1>{{ s.name }}</h1>
+    <h3>HOME/AWAY: {{ s.away }}</h3>
+    <div class="col-sm-4 col-md-4" ng-repeat="t in s.thermostats">
+      <div class="thumbnail">
+        <div class="caption">
+          <h3>{{ t.name_long }}</h3>
+          <p>Target Temp: {{ t.target_temperature_f }}</p>
+          <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 <footer></footer>
