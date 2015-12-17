@@ -15,6 +15,6 @@ router
   .get('/callback', passport.authenticate('nest', {
     failureRedirect: '/',
     session: false
-  }), auth.setTokenCookie);
+  }), auth.setNestTokenCookie);
 
 module.exports = router;

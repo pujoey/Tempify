@@ -8,7 +8,7 @@ var router = express.Router();
 
 router
   .get('/', passport.authenticate('google', {
-    failureRedirect: '/signup',
+    failureRedirect: '/',
     scope: [
       'profile',
       'email'
@@ -17,7 +17,7 @@ router
   }))
 
   .get('/callback', passport.authenticate('google', {
-    failureRedirect: '/signup',
+    failureRedirect: '/',
     session: false
   }), auth.setTokenCookie);
 

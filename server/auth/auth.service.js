@@ -10,6 +10,8 @@ var validateJwt = expressJwt({
   secret: config.secrets.session
 });
 
+var nestToken;
+
 /**
  * Attaches the user object to the request if authenticated
  * Otherwise returns 403
@@ -82,7 +84,22 @@ function setTokenCookie(req, res) {
   res.redirect('/');
 }
 
+/**
+ * Set nest token cookie directly for oAuth strategies
+ */
+function setNestTokenCookie(req, res) {
+  if (!req.user) {
+    return res.status(404).send('Something went wrong, please try again.');
+  }
+
+  //remove token after accessToken is able to inject
+  var token = "c.vW3jPXFmA9opTZRzltTd388nmGg1GkjBbSIIAKZ2m5UYUTZ3AIUQb7fAQysMEU0U9MC00WCNhUBUWAMV1RJzVawg9WnsiUD3cCrulm4TFKjiOAt90VBVsx3i5hNYoRzJqlFp2716WXbF1o5x";
+  res.cookie('nest_token', req.user.nest);
+  res.redirect('/');
+}
+
 exports.isAuthenticated = isAuthenticated;
 exports.hasRole = hasRole;
 exports.signToken = signToken;
 exports.setTokenCookie = setTokenCookie;
+exports.setNestTokenCookie = setNestTokenCookie;

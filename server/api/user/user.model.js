@@ -19,7 +19,7 @@ var UserSchema = new Schema({
   provider: String,
   salt: String,
   google: {},
-  nest: {}
+  nest: String
 });
 
 /**

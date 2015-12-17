@@ -1,0 +1,12 @@
+URL: https://github.com/BorisMoore/jsrender/archive/v1.0.0-rc.68.zip
+Version: v1.0.0-rc.68
+License: MIT
+License File: LICENSE
+
+Description:
+JsRender is a light-weight but powerful templating engine, highly extensible,
+and optimized for high-performance rendering, without DOM dependency. It is
+designed for use in the browser or on Node.js, with or without jQuery.
+
+Local Modifications:
+No Modifications
