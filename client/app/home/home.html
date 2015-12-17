@@ -1,8 +1,12 @@
 <navbar></navbar>
 
-<h1>{{ name }}</h1>
-
-<h3>HOME/AWAY: {{ away }}</h3>
+<div class="structure" ng-repeat="s in vm.structures">
+  <h1>{{ s.name }}</h1>
+  <h3>HOME/AWAY: {{ s.away }}</h3>
+  <ul ng-repeat="t in s.thermostats">
+    <li>{{ t.name_long }} | Target Temp: {{ t.target_temperature_f }}</li>
+  </ul>
+</div>
 <!-- {{thermostats}}
  --><!-- <div id="content" ng-repeat="therm in thermostats">
   <div>

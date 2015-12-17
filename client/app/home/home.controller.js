@@ -5,6 +5,12 @@
 class HomeController {
 
   constructor($http, $scope, socket, Auth, $cookies) {
+    var vm = this;
+
+    vm.data = {
+      response: "goodbye"
+    };
+
     this.$http = $http;
     this.myToken = {};
     this.awesomeThings = [];
@@ -51,41 +57,32 @@ class HomeController {
      * This callback will render all of the new device states to the browser.
      */
     source.addEventListener('put', function(e) {
+      $scope.$apply(function() {
+        vm.response = JSON.parse(e.data).data;
 
-      console.log(e.data);
+        var devices     = vm.response.devices     || {};
+        var thermostats = devices.thermostats     || {};
+        var smokeAlarms = devices.smoke_co_alarms || {};
+        var cameras     = devices.cameras         || {};
 
-      var data = JSON.parse(e.data).data || {};
-      var devices = data.devices || {};
-      var thermostats = devices.thermostats || {};
-      var smokeAlarms = devices.smoke_co_alarms || {};
-      var cameras = devices.cameras || {};
-      var structures = data.structures || {};
+        var structures   = vm.response.structures  || {};
 
-      var structureArr = Object.keys(structures).map(function(id) {
-        var thermostatIds = structures[id].thermostats || [];
-        var smokeAlarmIds = structures[id].smoke_co_alarms || [];
-        var cameraIds = structures[id].cameras || [];
+        vm.structures = Object.keys(structures).map(function(id) {
+          var name          = structures[id].name;
+          var away          = structures[id].away;
+          var thermostatIds = structures[id].thermostats     || [];
+          var smokeAlarmIds = structures[id].smoke_co_alarms || [];
+          var cameraIds     = structures[id].cameras         || [];
 
-
-         console.log(thermostatIds);
-        $scope.name = structures[id].name;
-        $scope.away = structures[id].away;
-        // $scope.thermostats = thermostatIds.map(function(id) { return thermostats[id]; })
-
-
-
-        return {
-          name: structures[id].name,
-          away: structures[id].away,
-          thermostats: thermostatIds.map(function(id) { return thermostats[id]; }),
-          smokeAlarms: smokeAlarmIds.map(function(id) { return smokeAlarms[id]; }),
-          cameras: cameraIds.map(function(id) { return cameras[id]; })
-        };
-
-
+          return {
+            name: name,
+            away: away,
+            thermostats: thermostatIds.map(function(id) { return thermostats[id]; }),
+            smokeAlarms: smokeAlarmIds.map(function(id) { return smokeAlarms[id]; }),
+            cameras:     cameraIds.map(function(id) { return cameras[id]; })
+          };
+        });
       });
-
-      // $('#content').html($.templates('#structureTemplate').render(structureArr));
     });
 
     /**
