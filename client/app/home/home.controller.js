@@ -14,12 +14,13 @@ class HomeController {
     this.$http = $http;
     this.myToken = {};
     this.awesomeThings = [];
+    var zip = 90007;
 
-
-    // this.$http.get('http://localhost:3000/api/getNestToken').then(function(res) {
-    //   $cookies.put('nest_token', res.data.token);
-    //   console.log(res.data.token);
-    // });
+    $http.get('https://query.yahooapis.com/v1/public/yql?q=SELECT%20*%20FROM%20weather.forecast%20WHERE%20location%3D%22' + zip + '%22&format=json&diagnostics=true&callback=')
+      .then(function(res) {
+        vm.weather = res.data.query.results.channel;
+        console.log(res.data.query.results.channel);
+      });
 
     //Auth implmentation for ng-hide on jumbotron
     this.isLoggedIn = Auth.isLoggedIn;

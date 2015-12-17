@@ -8,22 +8,37 @@
   </ul>
 </div> -->
 
-<div class="row">
-  <div ng-repeat="s in vm.structures">
+<a href="{{vm.weather.link}}">
+<img border="0" alt="yahoo!weather" src="{{vm.weather.image.url}}" width="142" height="18">
+</a>
+<h2>Outside: {{vm.weather.item.condition.temp}}℉</h2><p>{{vm.weather.item.condition.text}}</p>
+<p>Wind Chill: {{vm.weather.wind.chill}} mph <br>
+Humidity: {{vm.weather.atmosphere.humidity}}% <br>
+Atmosphere Pressure: {{vm.weather.atmosphere.pressure}} in <br>
+Sunrise: {{vm.weather.astronomy.sunrise}} | Sunset: {{vm.weather.astronomy.sunset}} </p>
+<ul ng-repeat="day in vm.weather.item.forecast">
+  <li>Day: {{day.day}} | High: {{day.high}} | High: {{day.low}} | {{day.text}} </li>
+</ul>
+
+<div ng-repeat="s in vm.structures">
     <h1>{{ s.name }}</h1>
     <h3>HOME/AWAY: {{ s.away }}</h3>
+  <div class="row">
     <div class="col-sm-4 col-md-4" ng-repeat="t in s.thermostats">
       <div class="thumbnail">
         <div class="caption">
           <h3>{{ t.name_long }}</h3>
-          <p>Target Temp: {{ t.target_temperature_f }}</p>
+          <p ng-if="t.temperature_scale =='F' ">Current Temp: {{ t.ambient_temperature_f }} ℉</p>
+          <p ng-if="t.temperature_scale =='C' ">Current Temp: {{ t.ambient_temperature_c }} ℃</p>
+          <p>Humidity: {{ t.humidity }} %</p>
+          <p ng-if="t.temperature_scale =='F' ">Target Temp: {{ t.target_temperature_f }} ℉</p>
+          <p ng-if="t.temperature_scale =='C' ">Target Temp: {{ t.target_temperature_c }} ℃</p>
           <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
         </div>
       </div>
     </div>
   </div>
 </div>
-
 
 <footer></footer>
 
