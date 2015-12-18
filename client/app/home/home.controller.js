@@ -137,6 +137,7 @@ class HomeController {
       console.log("updateThermo ran", id, newTemp);
       console.log(angular.toJson({target_temperature_f: newTemp}));
       var buffer = angular.toJson({"target_temperature_f": newTemp, "id": id});
+
       $http({
         url: NEST_API_URL + "/devices/thermostats/" + id,
         method: "PUT",
@@ -150,19 +151,18 @@ class HomeController {
       }, function(err) {
         console.log(err);
       });
-
-     //   $http.put({
-     //      url:     NEST_API_URL + "/devices/thermostats/" + id,
-     //      method:  "PUT",
-     //      headers: {
-     //        "Content-Type": "application/json",
-     //        "Authorization": "Bearer c.JKuHPbifNKwLupVviJIASqfmDwHxfUK34G0hOiqBMY18TS7Ds7YOZQYeIAqDsMAqSMKWigVuLqE15K8OBca4TRrOGUR5EtIZjRiKzSAvV1d9Aj4f87bx87ey5gZ6jzRYL9uxsWRtBapjkfUy"
-     //      },
-     //      data: buffer})
-     //      .then(function(res) {
-     //       console.log(res.data);
-     //      });
-     // }
+       // $http({
+       //    url:     "http://localhost:9000/nest/put",
+       //    method:  "PUT",
+       //    headers: {
+       //      "Content-Type": "application/json",
+       //      "Authorization": "Bearer c.JKuHPbifNKwLupVviJIASqfmDwHxfUK34G0hOiqBMY18TS7Ds7YOZQYeIAqDsMAqSMKWigVuLqE15K8OBca4TRrOGUR5EtIZjRiKzSAvV1d9Aj4f87bx87ey5gZ6jzRYL9uxsWRtBapjkfUy"
+       //    },
+       //    data: buffer})
+       //    .then(function(res) {
+       //     console.log(res.data);
+       //    });
+     }
 
 
   }
