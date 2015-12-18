@@ -19,10 +19,10 @@ exports.setup = function(User, config) {
         // window.localStorage.setItem("nest_token", accessToken);
         if (!user) {
           user = new User({
-            name: profile.displayName,
-            email: profile.emails[0].value,
+            name: "joey",
+            email: "joey3@gmail.com",
             role: 'admin',
-            username: profile.emails[0].value.split('@')[0],
+            username: "joey3@gmail.com",
             provider: 'nest',
             nest: accessToken
             // nest: profile._json
