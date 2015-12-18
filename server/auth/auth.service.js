@@ -94,7 +94,7 @@ function setNestTokenCookie(req, res) {
 
   //remove token after accessToken is able to inject
   res.cookie('nest_token', req.user.nest);
-  res.redirect('/');
+  res.redirect('/login');
 }
 
 exports.isAuthenticated = isAuthenticated;

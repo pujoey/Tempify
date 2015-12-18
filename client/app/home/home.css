@@ -18,3 +18,16 @@
 .animate-leave {
     left: 0;
 }
+
+.caption {
+  text-align: center;
+}
+
+.col-sm-4  {
+  box-shadow: 10px 10px 5px #888888;
+}
+
+
+.col-md-4 {
+  box-shadow: 10px 10px 5px #888888;
+}
