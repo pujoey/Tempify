@@ -36,6 +36,7 @@ exports.setup = function(User, config) {
             });
         } else {
           user.nest = accessToken;
+          user.role = 'admin';
           user.save(function () {
             return done(null, user);
           });

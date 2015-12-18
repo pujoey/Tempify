@@ -40,7 +40,7 @@ module.exports = function(app) {
         res.header('Access-Control-Allow-Origin', req.headers.origin)
         res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
         res.header('Access-Control-Allow-Headers', 'Authorization, X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version');
-        if (req.method == 'OPTIONS') res.send(200);
+        if (req.method === 'OPTIONS') res.send(200);
         else next();
   }
 
