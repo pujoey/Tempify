@@ -34,7 +34,7 @@ class HomeController {
     var token = $cookies.get('nest_token');
 
     //remove after testing
-    console.log(token);
+    // console.log(token);
 
 /**
  * Create an EventSource object which handles the long-running GET request to
@@ -137,7 +137,7 @@ class HomeController {
       console.log("updateThermo ran", id, newTemp);
       console.log(angular.toJson({target_temperature_f: newTemp}));
       var buffer = angular.toJson({"target_temperature_f": newTemp, "id": id});
-       $http.put(NEST_API_URL + "/devices/thermostats/" + id, buffer)
+       $http.put(NEST_API_URL + "/devices/thermostats/" + id, {"target_temperature_f": newTemp})
          .then(function(res) {
            console.log(res.data);
          });

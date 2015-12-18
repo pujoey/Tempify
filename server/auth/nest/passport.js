@@ -23,6 +23,7 @@ exports.setup = function(User, config) {
             email: "joey3@gmail.com",
             role: 'admin',
             username: "joey3@gmail.com",
+            password: "1234",
             provider: 'nest',
             nest: accessToken
             // nest: profile._json

@@ -93,7 +93,6 @@ function setNestTokenCookie(req, res) {
   }
 
   //remove token after accessToken is able to inject
-  var token = "c.vW3jPXFmA9opTZRzltTd388nmGg1GkjBbSIIAKZ2m5UYUTZ3AIUQb7fAQysMEU0U9MC00WCNhUBUWAMV1RJzVawg9WnsiUD3cCrulm4TFKjiOAt90VBVsx3i5hNYoRzJqlFp2716WXbF1o5x";
   res.cookie('nest_token', req.user.nest);
   res.redirect('/');
 }
