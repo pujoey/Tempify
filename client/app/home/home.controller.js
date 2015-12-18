@@ -7,20 +7,11 @@ class HomeController {
   constructor($http, $scope, socket, Auth, $cookies) {
     var vm = this;
 
-    vm.data = {
-      response: "goodbye"
-    };
+    vm.weatherUpdated = false;  //run weather update once
 
     this.$http = $http;
     this.myToken = {};
     this.awesomeThings = [];
-    var zip = 90007;
-
-    $http.get('https://query.yahooapis.com/v1/public/yql?q=SELECT%20*%20FROM%20weather.forecast%20WHERE%20location%3D%22' + zip + '%22&format=json&diagnostics=true&callback=')
-      .then(function(res) {
-        vm.weather = res.data.query.results.channel;
-        console.log(res.data.query.results.channel);
-      });
 
     //Auth implmentation for ng-hide on jumbotron
     this.isLoggedIn = Auth.isLoggedIn;
@@ -70,10 +61,22 @@ class HomeController {
 
         vm.structures = Object.keys(structures).map(function(id) {
           var name          = structures[id].name;
+          var zip           = structures[id].postal_code;
+          var deviceId      = structures[id].postal_code;
           var away          = structures[id].away;
           var thermostatIds = structures[id].thermostats     || [];
           var smokeAlarmIds = structures[id].smoke_co_alarms || [];
           var cameraIds     = structures[id].cameras         || [];
+
+    /**
+     * When the zip code is available, make api call to yahoo weather.
+     */
+        if (zip && (vm.weatherUpdated == false)) {
+          updateWeather(zip);
+          console.log("weather updated");
+          vm.weatherUpdated = true;
+        }
+
 
           return {
             name: name,
@@ -113,6 +116,44 @@ class HomeController {
       }
       // $('#connect-state-img').attr('src', '/img/red-state.png');
     }, false);
+
+    /**
+     * Acquire outside weather data based on thermostat's zip code
+     */
+    vm.updateWeather = updateWeather;
+    function updateWeather(zip) {
+      $http.get('https://query.yahooapis.com/v1/public/yql?q=SELECT%20*%20FROM%20weather.forecast%20WHERE%20location%3D%22' + zip + '%22&format=json&diagnostics=true&callback=')
+        .then(function(res) {
+          vm.weather = res.data.query.results.channel;
+          console.log(res.data.query.results.channel);
+        });
+    } //updateWeather
+
+    /**
+     * Update thermostat through put request to Nest
+     */
+     vm.updateThermo = updateThermo;
+     function updateThermo(id, newTemp) {
+      console.log("updateThermo ran", id, newTemp);
+      console.log(angular.toJson({target_temperature_f: newTemp}));
+      var buffer = angular.toJson({"target_temperature_f": newTemp, "id": id});
+       $http.put(NEST_API_URL + "/devices/thermostats/" + id, buffer)
+         .then(function(res) {
+           console.log(res.data);
+         });
+
+       // $http({
+       //    url:     "http://localhost:9000/nest/put",
+       //    method:  "PUT",
+       //    headers: {
+       //      "Content-Type": "application/json",
+       //      "Authorization": "Bearer c.JKuHPbifNKwLupVviJIASqfmDwHxfUK34G0hOiqBMY18TS7Ds7YOZQYeIAqDsMAqSMKWigVuLqE15K8OBca4TRrOGUR5EtIZjRiKzSAvV1d9Aj4f87bx87ey5gZ6jzRYL9uxsWRtBapjkfUy"
+       //    },
+       //    data: buffer})
+       //    .then(function(res) {
+       //     console.log(res.data);
+       //    });
+     }
 
 
   }

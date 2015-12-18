@@ -1,45 +1,69 @@
 <navbar></navbar>
 
-<!-- <div class="structure" ng-repeat="s in vm.structures">
-  <h1>{{ s.name }}</h1>
-  <h3>HOME/AWAY: {{ s.away }}</h3>
-  <ul ng-repeat="t in s.thermostats">
-    <li>{{ t.name_long }} | Target Temp: {{ t.target_temperature_f }}</li>
-  </ul>
-</div> -->
 
-<a href="{{vm.weather.link}}">
-<img border="0" alt="yahoo!weather" src="{{vm.weather.image.url}}" width="142" height="18">
-</a>
-<h2>Outside: {{vm.weather.item.condition.temp}}℉</h2><p>{{vm.weather.item.condition.text}}</p>
-<p>Wind Chill: {{vm.weather.wind.chill}} mph <br>
-Humidity: {{vm.weather.atmosphere.humidity}}% <br>
-Atmosphere Pressure: {{vm.weather.atmosphere.pressure}} in <br>
-Sunrise: {{vm.weather.astronomy.sunrise}} | Sunset: {{vm.weather.astronomy.sunset}} </p>
-<ul ng-repeat="day in vm.weather.item.forecast">
-  <li>Day: {{day.day}} | High: {{day.high}} | High: {{day.low}} | {{day.text}} </li>
-</ul>
+<!-- hide once weather data is received -->
+<div ng-hide="vm.weatherUpdated" class='animate-leave'>
+  <header class="hero-unit" id="banner">
+    <div class="container">
+      <br>
+      <br>
+      <h1>CONNECTING TO YOUR NEST...</h1>
+      <br>
+      <br>
+      <br>
+      <img src="assets/images/nest-home.png" style="width:380px;height:380px;" alt="Nest">
+    </div>
+  </header>
 
-<div ng-repeat="s in vm.structures">
-    <h1>{{ s.name }}</h1>
-    <h3>HOME/AWAY: {{ s.away }}</h3>
-  <div class="row">
-    <div class="col-sm-4 col-md-4" ng-repeat="t in s.thermostats">
-      <div class="thumbnail">
-        <div class="caption">
-          <h3>{{ t.name_long }}</h3>
-          <p ng-if="t.temperature_scale =='F' ">Current Temp: {{ t.ambient_temperature_f }} ℉</p>
-          <p ng-if="t.temperature_scale =='C' ">Current Temp: {{ t.ambient_temperature_c }} ℃</p>
-          <p>Humidity: {{ t.humidity }} %</p>
-          <p ng-if="t.temperature_scale =='F' ">Target Temp: {{ t.target_temperature_f }} ℉</p>
-          <p ng-if="t.temperature_scale =='C' ">Target Temp: {{ t.target_temperature_c }} ℃</p>
-          <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+</div>
+<!-- show once weather data is received -->
+<div ng-show="vm.weatherUpdated" class='animate-enter'>
+  <div>
+    <a href="{{vm.weather.link}}">
+    <img border="0" alt="yahoo!weather" src="{{vm.weather.image.url}}" width="142" height="18">
+    </a>
+    <h2>Outside: {{vm.weather.item.condition.temp}}℉</h2><p>{{vm.weather.item.condition.text}}</p>
+    <p>Wind Chill: {{vm.weather.wind.chill}} mph <br>
+    Humidity: {{vm.weather.atmosphere.humidity}}% <br>
+    Atmosphere Pressure: {{vm.weather.atmosphere.pressure}} in <br>
+    Sunrise: {{vm.weather.astronomy.sunrise}} | Sunset: {{vm.weather.astronomy.sunset}} </p>
+    <ul ng-repeat="day in vm.weather.item.forecast">
+      <li>Day: {{day.day}} | High: {{day.high}} | High: {{day.low}} | {{day.text}} </li>
+    </ul>
+  </div>
+
+  <div ng-repeat="s in vm.structures">
+      <h1>{{ s.name }}</h1>
+      <h3>HOME/AWAY: {{ s.away }}</h3>
+    <div class="row">
+      <div class="col-sm-4 col-md-4" ng-repeat="t in s.thermostats">
+        <div class="thumbnail">
+          <div class="caption">
+            <h3>{{ t.name_long }}</h3>
+            <p ng-if="t.temperature_scale =='F' ">Current Temp: {{ t.ambient_temperature_f }} ℉</p>
+            <p ng-if="t.temperature_scale =='C' ">Current Temp: {{ t.ambient_temperature_c }} ℃</p>
+            <p>Humidity: {{ t.humidity }} %</p>
+            <p ng-if="t.temperature_scale =='F' ">Target Temp: {{ t.target_temperature_f }} ℉</p>
+            <p ng-if="t.temperature_scale =='C' ">Target Temp: {{ t.target_temperature_c }} ℃</p>
+            <form ng-submit="vm.updateThermo(t.device_id, t.newTemp)">
+              <input placeholder="Set New Temperature..." ng-if="t.temperature_scale =='F'" ng-model="t.newTemp" ng-pattern="/^\d+$/" name="anim" class="my-input"
+                       aria-describedby="inputDescription" />
+              <input placeholder="Set New Temperature..." ng-if="t.temperature_scale =='C'" ng-model="t.newTemp" ng-pattern="/^\d+$/" name="anim" class="my-input"
+                       aria-describedby="inputDescription" />
+              <p ng-if="t.temperature_scale =='C' ">Target Temp: {{ t.target_temperature_c }} ℃</p>
+              <input class="btn btn-primary" type="submit" id="submit" value="Submit" />
+            </form>
+          </div>
         </div>
+        {{t.device_id}}
       </div>
     </div>
   </div>
+
 </div>
 
+
+<!-- {{vm.response}} -->
 <footer></footer>
 
 
