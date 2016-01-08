@@ -31,7 +31,7 @@ module.exports = function(app) {
     };
 
       var any = https.request(options, function (res) {
-
+          console.log(req.body);
       });
 
      // write data to request body

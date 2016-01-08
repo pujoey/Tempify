@@ -143,7 +143,7 @@ class HomeController {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "Bearer c.JKuHPbifNKwLupVviJIASqfmDwHxfUK34G0hOiqBMY18TS7Ds7YOZQYeIAqDsMAqSMKWigVuLqE15K8OBca4TRrOGUR5EtIZjRiKzSAvV1d9Aj4f87bx87ey5gZ6jzRYL9uxsWRtBapjkfUy"
+          // "Authorization": "Bearer c.JKuHPbifNKwLupVviJIASqfmDwHxfUK34G0hOiqBMY18TS7Ds7YOZQYeIAqDsMAqSMKWigVuLqE15K8OBca4TRrOGUR5EtIZjRiKzSAvV1d9Aj4f87bx87ey5gZ6jzRYL9uxsWRtBapjkfUy"
         },
         data: {"target_temperature_f": newTemp}
       }).then(function(res) {
