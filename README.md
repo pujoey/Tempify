@@ -5,7 +5,6 @@
 # Tempify WDI DTLA 6 Project 4
 
 ---
-### Project Wireframe
 
 ![Actual Page](https://i.imgur.com/7Fy3iQ8.png =300x "Image")
 [Link to Wireframe & ERD on Trello](https://trello.com/b/aYCU4qRQ/project-4-tempify)
