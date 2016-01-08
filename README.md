@@ -22,6 +22,19 @@ This app where you can control your NEST thermostat to view current indoor tempe
 
 ---
 
+## Project Requirement
+
+Technical Requirements
+Your app must:
+- Build a full-stack application by making your own backend and your own front-end
+- Have an interactive front-end
+- Be a complete product, which most likely means multiple relationships and CRUD functionality for at least a couple models
+- Implement thoughtful user stories prioritized to help guide you
+Be deployed online so that it's publicly accessible
+
+
+---
+
 ## Project Challenges
 
 - Learn to work with scaffolding tool Yeoman which generates large amount of files and complex file structure.
