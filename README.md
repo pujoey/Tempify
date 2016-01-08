@@ -24,6 +24,7 @@ This app where you can control your NEST thermostat to view current indoor tempe
 
 ## Project Requirement
 
+
 Technical Requirements
 Your app must:
 - Build a full-stack application by making your own backend and your own front-end
@@ -33,7 +34,28 @@ Your app must:
 Be deployed online so that it's publicly accessible
 
 
+
 ---
+
+
+## Technology Used
+
+
+
+Communication | Design | Development | APIs | Deployment
+----| ---| --- | --- | --- | ---
+[Trello](https://trello.com/)| [Moqups](moqups.com)| [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)| [Nest Cloud API](https://developer.nest.com/documentation/cloud/apis) | [Heroku](http://heroku.com/)
+ [Slack](https://slack.com/) | [Sublime](http://www.sublimetext.com/) | [CSS](http://www.w3schools.com/css/) | [Google OAuth](https://developers.google.com/identity/) | [MongoLab](https://mongolab.com/)
+ [Markdown](https://guides.github.com/features/mastering-markdown/)|  | [Bootstrap](http://getbootstrap.com/) | [Yahoo! Weather](https://developer.yahoo.com/weather/) | [Grunt](http://gruntjs.com/)
+ [Slides](http://slides.com/) |  | [JavaScript/jQuery](https://www.javascript.com/) | [Socket.io](http://socket.io/)| 
+ [Agile management](https://en.wikipedia.org/wiki/Agile_management)|  | [Node.js](https://nodejs.org/en/) | [EventSource](https://developer.mozilla.org/en-US/docs/Web/API/EventSource)
+ |  | [Express](http://expressjs.com/) |
+ |  | [MongoDB](https://docs.mongodb.org/manual/) |
+ |  | [Mongoose](http://mongoosejs.com/) |
+ |  | [Yeoman](http://yeoman.io/) |
+ |  | [AngularJS](https://angularjs.org/) |
+
+ ---
 
 ## Project Challenges
 
@@ -74,18 +96,3 @@ Run `grunt build` for building and `grunt serve` for preview.
 
 Running `npm test` will run the unit tests with karma.
 
-## Technology Used
-
-
-Communication | Design | Development | APIs | Deployment
-----| ---| --- | --- | --- | ---
-[Trello](https://trello.com/)| [Moqups](moqups.com)| [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)| [Nest Cloud API](https://developer.nest.com/documentation/cloud/apis) | [Heroku](http://heroku.com/)
- [Slack](https://slack.com/) | [Sublime](http://www.sublimetext.com/) | [CSS](http://www.w3schools.com/css/) | [Google OAuth](https://developers.google.com/identity/) | [MongoLab](https://mongolab.com/)
- [Markdown](https://guides.github.com/features/mastering-markdown/)|  | [Bootstrap](http://getbootstrap.com/) | [Yahoo! Weather](https://developer.yahoo.com/weather/) | [Grunt](http://gruntjs.com/)
- [Slides](http://slides.com/) |  | [JavaScript/jQuery](https://www.javascript.com/) | [Socket.io](http://socket.io/)| 
- [Agile management](https://en.wikipedia.org/wiki/Agile_management)|  | [Node.js](https://nodejs.org/en/) | [EventSource](https://developer.mozilla.org/en-US/docs/Web/API/EventSource)
- |  | [Express](http://expressjs.com/) |
- |  | [MongoDB](https://docs.mongodb.org/manual/) |
- |  | [Mongoose](http://mongoosejs.com/) |
- |  | [Yeoman](http://yeoman.io/) |
- |  | [AngularJS](https://angularjs.org/) |
