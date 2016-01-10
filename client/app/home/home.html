@@ -47,12 +47,13 @@
           <img border="0" alt="yahoo!weather" src="{{vm.weather.image.url}}" width="142" height="18">
           </a>
           <div class="caption">
-            <h3>Outside: {{vm.weather.item.condition.temp}}℉ {{vm.weather.item.condition.text}}</h3>
+            <h4>Outside: {{vm.weather.item.condition.temp}}℉ {{vm.weather.item.condition.text}}</h4>
             <ul  class="list-group">
               <li class="list-group-item" >Wind Chill <strong>{{vm.weather.wind.chill}} mph</strong></li>
               <li class="list-group-item" >Humidity <strong>{{vm.weather.atmosphere.humidity}}%</strong></li>
               <li class="list-group-item" >Atmosphere Pressure <strong>{{vm.weather.atmosphere.pressure}}</strong></li>
               <li class="list-group-item" >Sunrise <strong>{{vm.weather.astronomy.sunrise}}</strong> | Sunset <strong>{{vm.weather.astronomy.sunset}}</strong></li>
+              <br>
             </ul>
           </div>
         </div>
@@ -78,8 +79,11 @@
     <div class="row">
       <div class="col-sm-4 col-md-4" ng-repeat="t in s.thermostats">
         <div class="thumbnail">
+          <img ng-if="t.is_online" align="left" alt="Nest Logo" title="Nest2" src="assets/images/nest_on.png" height="15%" width="15%">
+          <img ng-if="!t.is_online" align="left" alt="Nest Logo" title="Nest2" src="assets/images/nest_off.png" height="15%" width="15%">
           <div class="caption">
-            <h3>{{ t.name_long }}</h3>
+            <h4>{{ t.name_long }}</h4>
+            <br>
             <ul class="list-group">
               <li class="list-group-item" ng-if="t.temperature_scale =='F' ">Current Temp <strong>{{ t.ambient_temperature_f }} ℉</strong></li>
               <li class="list-group-item" ng-if="t.temperature_scale =='C' ">Current Temp <strong>{{ t.ambient_temperature_c }} ℃</strong></li>
@@ -110,7 +114,7 @@
 
 
 
-<!-- Template for rendering Nest Thermostat state -->
+<!-- Template for rendering Nest Thermostat state
 <script id="thermTemplate" type="text/x-jsrender">
   <div class="mdl-cell mdl-cell--4-col">
     <div class="mdl-card mdl-shadow--2dp demo-card-square">
@@ -145,9 +149,9 @@
       </div>
     </div>
   </div>
-</script>
+</script>  -->
 
-<!-- Template for rendering Nest Protect state -->
+<!-- Template for rendering Nest Protect state
 <script id="smokeTemplate" type="text/x-jsrender">
   <div class="mdl-cell mdl-cell--4-col">
     <div class="mdl-card mdl-shadow--2dp demo-card-square">
@@ -181,9 +185,9 @@
       </div>
     </div>
   </div>
-</script>
+</script>  -->
 
-<!-- Template for rendering NestCam state -->
+<!-- Template for rendering NestCam state
 <script id="cameraTemplate" type="text/x-jsrender">
   <div class="mdl-cell mdl-cell--4-col">
     <div class="mdl-card mdl-shadow--2dp demo-card-square">
@@ -205,9 +209,9 @@
       </div>
     </div>
   </div>
-</script>
+</script>  -->
 
-<!-- Template for rendering each structure (and all devices) -->
+<!-- Template for rendering each structure (and all devices)
 <script id="structureTemplate" type="text/x-jsrender">
   <div class="demo-grid-1 mdl-grid">
     <h2 class="mdl-typography--display-3">
@@ -219,5 +223,5 @@
     {{for smokeAlarms tmpl="#smokeTemplate" /}}
     {{for cameras tmpl="#cameraTemplate" /}}
   </div>
-</script>
+</script>  -->
 
