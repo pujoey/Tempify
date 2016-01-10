@@ -16,12 +16,30 @@
   </header>
 
 </div>
-<!-- show once weather data is received -->
+
+<!-- stay hidden until weather data is received -->
 <div ng-show="vm.weatherUpdated" class='animate-enter'>
 
   <div ng-repeat="s in vm.structures">
     <div class="row">
-      <!-- Yahoo weather API for outside temp -->
+
+      <!-- NEST API to show HOME/AWAY status -->
+      <div class="col-sm-4 col-md-4">
+        <div class="thumbnail">
+          <div class="caption">
+          <br>
+          <br>
+          <h1><span class="glyphicon glyphicon-home" style="color:#80d5ff;" aria-hidden="true"></span></h1>
+          <h1>{{ s.name }}</h1>
+          <h3>HOME/AWAY: {{ s.away }}</h3>
+          <br>
+          <br>
+          <br>
+          </div>
+        </div>
+      </div>
+
+      <!-- Yahoo weather API for current temp -->
       <div class="col-sm-4 col-md-4">
         <div class="thumbnail">
           <br>
@@ -31,38 +49,22 @@
           <div class="caption">
             <h3>Outside: {{vm.weather.item.condition.temp}}℉ {{vm.weather.item.condition.text}}</h3>
             <ul  class="list-group">
-              <li class="list-group-item" >Wind Chill: {{vm.weather.wind.chill}} mph</li>
-              <li class="list-group-item" >Humidity: {{vm.weather.atmosphere.humidity}}%</li>
-              <li class="list-group-item" >Atmosphere Pressure: {{vm.weather.atmosphere.pressure}}</li>
-              <li class="list-group-item" >Sunrise: {{vm.weather.astronomy.sunrise}} | Sunset: {{vm.weather.astronomy.sunset}}</li>
+              <li class="list-group-item" >Wind Chill <strong>{{vm.weather.wind.chill}} mph</strong></li>
+              <li class="list-group-item" >Humidity <strong>{{vm.weather.atmosphere.humidity}}%</strong></li>
+              <li class="list-group-item" >Atmosphere Pressure <strong>{{vm.weather.atmosphere.pressure}}</strong></li>
+              <li class="list-group-item" >Sunrise <strong>{{vm.weather.astronomy.sunrise}}</strong> | Sunset <strong>{{vm.weather.astronomy.sunset}}</strong></li>
             </ul>
           </div>
         </div>
       </div>
 
-      <div class="col-sm-4 col-md-4">
-        <div class="thumbnail">
-          <div class="caption">
-          <br>
-          <br>
-          <br>
-          <br>
-          <h1>{{ s.name }}</h1>
-          <h3>HOME/AWAY: {{ s.away }}</h3>
-          <br>
-          <br>
-          <br>
-          <br>
-          </div>
-        </div>
-      </div>
-
+      <!-- Yahoo weather API for 5 Day Forecasts -->
       <div class="col-sm-4 col-md-4">
         <div class="thumbnail">
           <div class="caption">
           <h3>5 DAY FORECASTS</h3>
           <ul class="list-group">
-            <li class="list-group-item" ng-repeat="day in vm.weather.item.forecast">Day: {{day.day}} | High: {{day.high}} | High: {{day.low}} | {{day.text}} </li>
+            <li class="list-group-item text-left" ng-repeat="day in vm.weather.item.forecast"><strong>{{day.day}}</strong> | High {{day.high}}℉ | Low {{day.low}}℉ | <strong>{{day.text}}</strong> </li>
           </ul>
           </div>
         </div>
@@ -79,11 +81,11 @@
           <div class="caption">
             <h3>{{ t.name_long }}</h3>
             <ul class="list-group">
-              <li class="list-group-item" ng-if="t.temperature_scale =='F' ">Current Temp: {{ t.ambient_temperature_f }} ℉</li>
-              <li class="list-group-item" ng-if="t.temperature_scale =='C' ">Current Temp: {{ t.ambient_temperature_c }} ℃</li>
-              <li class="list-group-item">Humidity: {{ t.humidity }} %</li>
-              <li class="list-group-item" ng-if="t.temperature_scale =='F' ">Target Temp: {{ t.target_temperature_f }} ℉</li>
-              <li class="list-group-item" ng-if="t.temperature_scale =='C' ">Target Temp: {{ t.target_temperature_c }} ℃</li>
+              <li class="list-group-item" ng-if="t.temperature_scale =='F' ">Current Temp <strong>{{ t.ambient_temperature_f }} ℉</strong></li>
+              <li class="list-group-item" ng-if="t.temperature_scale =='C' ">Current Temp <strong>{{ t.ambient_temperature_c }} ℃</strong></li>
+              <li class="list-group-item">Humidity <strong>{{ t.humidity }} %</strong></li>
+              <li class="list-group-item" ng-if="t.temperature_scale =='F' ">Target Temp <strong>{{ t.target_temperature_f }} ℉</strong></li>
+              <li class="list-group-item" ng-if="t.temperature_scale =='C' ">Target Temp <strong>{{ t.target_temperature_c }} ℃</strong></li>
             </ul>
               <form ng-submit="vm.updateThermo(t.device_id, t.newTemp)">
                 <input placeholder="Set New Temperature..." ng-if="t.temperature_scale =='F'" ng-model="t.newTemp" ng-pattern="/^\d+$/" name="anim" class="my-input"
