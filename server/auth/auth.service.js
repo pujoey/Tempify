@@ -81,7 +81,7 @@ function setTokenCookie(req, res) {
   }
   var token = signToken(req.user._id, req.user.role);
   res.cookie('token', token);
-  res.redirect('/');
+  res.redirect('/home');
 }
 
 /**
@@ -94,7 +94,7 @@ function setNestTokenCookie(req, res) {
 
   //remove token after accessToken is able to inject
   res.cookie('nest_token', req.user.nest);
-  res.redirect('/login');
+  res.redirect('/');
 }
 
 exports.isAuthenticated = isAuthenticated;

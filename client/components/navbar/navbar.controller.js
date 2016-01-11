@@ -4,10 +4,11 @@ class NavbarController {
   //start-non-standard
   menu = [{
     'title': 'Dashboard',
-    'state': 'main'
-  }, {
-    'title': 'Control',
     'state': 'home'
+  },
+  {
+    'title': 'Comments',
+    'state': 'main'
   }];
 
   isCollapsed = true;
