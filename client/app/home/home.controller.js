@@ -4,7 +4,7 @@
 
 class HomeController {
 
-  constructor($http, $scope, socket, Auth, $cookies) {
+  constructor($http, $scope, socket, Auth, $cookies, $sce) {
     var vm = this;
 
     vm.weatherUpdated = false;  //run weather update once
@@ -77,6 +77,16 @@ class HomeController {
           vm.weatherUpdated = true;
         }
 
+        /**
+         * Strict Contextual Escaping the camera web_url to prevent CORS issue
+         * DEBUG - attemping to iframe web_url to get live stream video encountered x-frame option set to DENY
+         */
+        //  console.log(cameras[cameraIds].web_url);
+        // vm.web_url = $sce.trustAsResourceUrl(cameras[cameraIds].web_url);
+        // console.log("testing", vm.web_url);
+
+
+
 
           return {
             name: name,
@@ -101,7 +111,6 @@ class HomeController {
      */
     source.addEventListener('open', function(e) {
       console.log('Connection opened!');
-      // $('#connect-state-img').attr('src', '/img/green-state.png');
     }, false);
 
     /**
@@ -114,7 +123,6 @@ class HomeController {
       } else {
         console.error('An error occurred: ', e);
       }
-      // $('#connect-state-img').attr('src', '/img/red-state.png');
     }, false);
 
     /**
@@ -125,7 +133,6 @@ class HomeController {
       $http.get('https://query.yahooapis.com/v1/public/yql?q=SELECT%20*%20FROM%20weather.forecast%20WHERE%20location%3D%22' + zip + '%22&format=json&diagnostics=true&callback=')
         .then(function(res) {
           vm.weather = res.data.query.results.channel;
-          console.log(res.data.query.results.channel);
         });
     } //updateWeather
 
@@ -137,6 +144,11 @@ class HomeController {
       console.log("updateThermo ran", id, newTemp);
       console.log(angular.toJson({target_temperature_f: newTemp}));
       var buffer = angular.toJson({"target_temperature_f": newTemp, "id": id});
+
+      /**
+       *  DEBUG - UPDATE does not work, $http.put causes CORS error
+       *          possibly due to EventSource does not allow "put"
+       */
 
       $http({
         url: NEST_API_URL + "/devices/thermostats/" + id,

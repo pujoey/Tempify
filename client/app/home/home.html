@@ -100,11 +100,36 @@
                 <input class="btn btn-primary" type="submit" id="submit" value="Submit" />
               </form>
 
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+          </div> <!-- caption -->
+        </div> <!-- thumbnail -->
+      </div> <!-- col-sm-4 -->
+    </div> <!-- row -->
+
+    <br>
+
+    <!-- Show all cameras -->
+    <div class="row">
+      <div class="col-sm-6 col-md-6" ng-repeat="t in s.cameras">
+        <div class="thumbnail">
+          <img ng-if="t.is_online" align="left" alt="Nest Cam" title="Nest2" src="assets/images/nest_on.png" height="15%" width="15%">
+          <img ng-if="!t.is_online" align="left" alt="Nest Logo" title="Nest2" src="assets/images/nest_off.png" height="15%" width="15%">
+          <div class="caption">
+            <h4>{{ t.name_long }}</h4>
+            <img ng-if="t.last_event" src="{{ t.last_event.animated_image_url }}" alt="">
+
+            <ul class="list-group">
+              <li class="list-group-item">Last Event: <strong>{{ t.last_event.start_time | date:'medium'}}</strong></li>
+              <li class="list-group-item">Online: <strong>{{ t.is_online ? "ON": "OFF"}}</strong></li>
+              <li class="list-group-item">Streaming: <strong>{{ t.is_streaming ? "ON": "OFF"}}</strong></li>
+              <li class="list-group-item">Audio: <strong>{{ t.is_audio_input_enabled ? "ON": "OFF"}}</strong></li>
+            </ul>
+          </div> <!-- caption -->
+        </div> <!-- thumbnail -->
+      </div> <!-- col-sm-4 -->
+    </div> <!-- row -->
+
+    <!-- {{ s.cameras }} -->
+  </div> <!--  vm.structure -->
 
 </div>
 
