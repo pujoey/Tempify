@@ -81,8 +81,8 @@ class HomeController {
          * Strict Contextual Escaping the camera web_url to prevent CORS issue
          * DEBUG - attemping to iframe web_url to get live stream video encountered x-frame option set to DENY
          */
-        //  console.log(cameras[cameraIds].web_url);
-        // vm.web_url = $sce.trustAsResourceUrl(cameras[cameraIds].web_url);
+         // console.log(cameras[cameraIds].web_url);
+        vm.web_url = $sce.trustAsResourceUrl(cameras[cameraIds].web_url);
         // console.log("testing", vm.web_url);
 
 
