@@ -28,6 +28,23 @@ This app where you can control your NEST thermostat to view current indoor tempe
 
 ---
 
+## App Features
+
+### Yahoo!Weather API integration
+Provides latest weather data from Yahoo!Weather to help you set your NEST thermostat.
+<img align="left" title="weather" src="https://i.imgur.com/MC54CcY.png" height="300px">
+
+### NEST Thermostat
+App uses REST streaming standard to listen for updates on the NEST cloud then updates app data in real time.
+<img align="left" title="thermostat" src="https://i.imgur.com/62gwozy.png" height="300px">
+
+### NEST Camera
+App keeps logs history of any motion, sound events so you can always check your history without signing up for NEST premium which costs $10 a month.
+<img align="left" title="camera" src="https://i.imgur.com/A8yv1vP.png" height="300px">
+
+
+---
+
 ## Project Requirement
 
 
