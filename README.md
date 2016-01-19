@@ -40,8 +40,7 @@ App uses REST streaming standard to listen for updates on the NEST cloud then up
 
 ### NEST Camera
 App keeps logs history of any motion, sound events so you can always check your history without signing up for NEST premium which costs $10 a month.
-<img align="left" title="camera" src="https://i.imgur.com/A8yv1vP.png" height="300px">
-
+![Actual Page](https://i.imgur.com/A8yv1vP.png =300x "Image")
 
 ---
 
