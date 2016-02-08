@@ -12,9 +12,10 @@ angular.module('tempifyApp', [
   'ui.bootstrap',
   'validation.match'
 ])
-  .config(function($urlRouterProvider, $locationProvider) {
+  .config(function($urlRouterProvider, $locationProvider, $sceDelegateProvider) {
     $urlRouterProvider
       .otherwise('/');
 
     $locationProvider.html5Mode(true);
+
   });
