@@ -117,8 +117,9 @@
           <img ng-if="!t.is_online" align="left" alt="Nest Logo" title="Nest2" src="assets/images/nest_off.png" height="15%" width="15%">
           <div class="caption">
             <h4>{{ t.name_long }}</h4>
-            <img ng-if="t.last_event" src="{{ t.last_event.animated_image_url }}" alt="">
-
+            <iframe type="text/html" frameborder="0" width="480" height="394" src="//video.nest.com/embedded/live/hlM88w?autoplay=1" />
+<!--             <img ng-if="t.last_event" src="{{ t.last_event.animated_image_url }}" alt="">
+ -->
             <ul class="list-group">
               <li class="list-group-item">Last Event: <strong>{{ t.last_event.start_time | date:'medium'}}</strong></li>
               <li class="list-group-item">Live Stream: <strong><a target="_blank" ng-href="{{ vm.web_url }}">Connect to NEST CAM</a></strong></li>
@@ -128,6 +129,7 @@
             </ul>
           </div> <!-- caption -->
         </div> <!-- thumbnail -->
+        {{t}}
       </div> <!-- col-sm-4 -->
     </div> <!-- row -->
 
