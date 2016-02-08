@@ -14,7 +14,6 @@
       <img src="assets/images/nest-home.png" style="width:380px;height:380px;" alt="Nest">
     </div>
   </header>
-
 </div>
 
 <!-- stay hidden until weather data is received -->
@@ -113,8 +112,8 @@
       <h2 class="text-center threed">NEST CAMs</h2>
       <div class="col-sm-6 col-md-6" ng-repeat="t in s.cameras">
         <div class="thumbnail">
-          <img ng-if="t.is_online" align="left" alt="Nest Cam" title="Nest2" src="assets/images/nest_on.png" height="15%" width="15%">
-          <img ng-if="!t.is_online" align="left" alt="Nest Logo" title="Nest2" src="assets/images/nest_off.png" height="15%" width="15%">
+          <img ng-if="t.is_online" align="left" alt="Nest Cam" title="Nest2" src="assets/images/nest_on.png" height="10%" width="10%">
+          <img ng-if="!t.is_online" align="left" alt="Nest Logo" title="Nest2" src="assets/images/nest_off.png" height="10%" width="10%">
           <div class="caption">
             <h4>{{ t.name_long }}</h4>
             <iframe type="text/html" frameborder="0" width="480" height="394" src="//video.nest.com/embedded/live/hlM88w?autoplay=1" />
@@ -130,6 +129,6 @@
       </div> <!-- col-sm-4 -->
     </div> <!-- row -->
   </div> <!--  vm.structure -->
-</div>
+</div> <!-- vm.weatherUpdated -->
 <!-- {{vm.response}} -->
 <footer></footer>
